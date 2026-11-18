@@ -1,35 +1,152 @@
-@media screen and (max-width:1024px) {
-    .hero h2 {
+
+/* ===== 1200px 이하 ===== */
+
+@media screen and (max-width: 1200px) {
+
+    /* 슬라이드 화살표 */
+    .hero .btn-wrap {
+        left: 0;
+    }
+
+}
+
+
+/* ===== 1024px 이하 ===== */
+
+@media screen and (max-width: 1024px) {
+
+    /* 메인 슬라이드 */
+    .hero-content h2 {
         font-size: 4.4rem;
     }
 
-    .thumb {
-        width: 30rem;
+    /* 최근 글 이미지 */
+    .post-image {
+        flex-basis: 30%;
         height: 18rem;
     }
-}
 
-@media screen and (max-width:768px) {
-
-    .inner,
-    main {
-        padding: 0 2rem;
+    /* 전통주 가이드 탭 */
+    .guide-tabs {
+        display: flex;
+        gap: 0;
+        padding: 0.6rem;
+        border-radius: 3rem;
+        background-color: #ffffff;
     }
 
+    .guide-tabs li {
+        flex: 1;
+    }
+
+    .guide-tabs button {
+        width: 100%;
+        padding: 1rem 0;
+        background: none;
+        color: #6b6790;
+        font-weight: normal;
+    }
+
+    .guide-tabs li.on button {
+        font-weight: bold;
+    }
+
+    /* 가이드 카드 2열 */
+    .guide-content {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        height: auto;
+        gap: 1.6rem;
+        padding: 1.6rem;
+        border-radius: 1.6rem;
+        background-color: #ffffff;
+    }
+
+    .guide-content li {
+        position: relative;
+        justify-content: flex-start;
+        gap: 1rem;
+        min-height: 18rem;
+        padding: 2rem;
+        background-color: #f5f3ff;
+    }
+
+    .guide-content .num {
+        position: static;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #7c6cf2;
+    }
+
+    .guide-content h3 {
+        font-size: 2rem;
+    }
+
+    .guide-content p {
+        color: #333333;
+    }
+
+    /* 선택된 카드 */
+    .guide-content li.on {
+        justify-content: flex-end;
+    }
+
+    .guide-content li.on .num {
+        display: none;
+    }
+
+    .guide-content li.on .badge {
+        top: 2rem;
+        left: 2rem;
+    }
+
+    .guide-content .thumb {
+        position: absolute;
+        top: 1.6rem;
+        right: 2rem;
+        width: auto;
+        height: auto;
+        font-size: 4rem;
+    }
+
+    .guide-content li.on h3 {
+        font-size: 2.8rem;
+    }
+
+}
+
+
+/* ===== 768px 이하 ===== */
+
+@media screen and (max-width: 768px) {
+
+    /* ===== 1. HEADER ===== */
+
     header {
-        padding: 1rem 0
+        padding: 1rem 0;
+    }
+
+    .header-inner {
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .logo {
         font-size: 2.4rem;
     }
 
+    /* 모바일 메뉴 버튼 */
     .mob-nav-btn {
         display: block;
         width: 3.9rem;
         height: 1.6rem;
         position: relative;
+        flex-shrink: 0;
     }
+
     .mob-nav-btn span {
         position: absolute;
         display: block;
@@ -37,8 +154,9 @@
         width: 100%;
         height: 2px;
         background-color: #ffffff;
-        transition: all .3s;
+        transition: all 0.3s;
     }
+
     .mob-nav-btn span:nth-child(1) {
         top: 0;
     }
@@ -51,47 +169,57 @@
         top: 98%;
     }
 
-    nav {
+    /* 모바일 메뉴 */
+    header nav {
         position: absolute;
-        background-color: antiquewhite;
+        top: 100%;
         left: 0;
         width: 100%;
+
         backdrop-filter: blur(5px);
-        background: #000000;
-        background: linear-gradient(180deg, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, 0.151) 100%);
-        top: 4.5rem;
-        transition: all .3s;
+        background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.7) 100%
+        );
+
         transform: translateX(110%);
         opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 0.3s;
     }
 
-    nav ul {
+    .gnb {
         flex-direction: column;
         gap: 0;
         align-items: center;
     }
 
-    nav ul li {
+    .gnb li {
         width: 100%;
         text-align: center;
     }
 
-    nav ul li a {
+    .gnb li a {
         display: block;
         padding: 1.4rem 0;
     }
 
-    nav ul li+li {
+    .gnb li + li {
         border-top: 1px solid #ffffff19;
     }
 
+    /* 메뉴 열림 */
     .m-nav-open header {
         background-color: #000000;
     }
 
-    .m-nav-open nav {
+    .m-nav-open header nav {
         transform: translateX(0);
         opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .m-nav-open .mob-nav-btn span:nth-child(1) {
@@ -109,7 +237,246 @@
         top: 48%;
     }
 
+
+    /* ===== 2. HERO 슬라이드 ===== */
+
     .hero {
         height: 56rem;
+        min-height: 0;
     }
+
+    .hero-slider,
+    .hero .swiper-slide {
+        height: 100%;
+    }
+
+    .hero .inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 0 2rem;
+        text-align: center;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 3.6rem;
+    }
+
+    .hero-content p {
+        font-size: 1.3rem;
+        line-height: 1.7;
+    }
+
+    /* ===== 3. MAIN ===== */
+
+    main {
+        padding: 0 2rem 6rem;
+    }
+
+    .profile-card,
+    .content-container {
+        width: 100%;
+        max-width: 96rem;
+    }
+
+
+    /* ===== 4. PROFILE ===== */
+
+    .profile-card {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+
+        margin-top: -4rem;
+        margin-bottom: 3rem;
+        padding: 2.4rem 2rem;
+
+        transform: none;
+        text-align: center;
+    }
+
+    .profile-icon {
+        flex: none;
+        width: 6rem;
+        height: 6rem;
+        font-size: 3rem;
+    }
+
+    .profile-copy {
+        width: 100%;
+    }
+
+    .profile-copy h2 {
+        font-size: 2rem;
+    }
+
+    .profile-copy p {
+        font-size: 1.2rem;
+    }
+
+    .profile-tags {
+        justify-content: center;
+        width: 100%;
+        padding-left: 0;
+    }
+
+
+    /* ===== 5. 최근 글 ===== */
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .post-card,
+    .post-card--reverse {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.6rem;
+    }
+
+    .post-image {
+        flex: none;
+        width: 100%;
+        height: 20rem;
+        min-height: 0;
+    }
+
+    .post-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .post-content p {
+        font-size: 1.3rem;
+    }
+
+
+    /* ===== 6. 전통주 가이드 ===== */
+
+    .guide-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.4rem;
+        padding: 0.6rem;
+        border-radius: 1.6rem;
+    }
+
+    .guide-tabs button {
+        border-radius: 1.2rem;
+        font-size: 1.4rem;
+    }
+
+    /* 가이드 카드를 세로로 배치 */
+    .guide-content {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .guide-content li {
+        position: relative;
+        justify-content: flex-end;
+        min-height: 9rem;
+        padding: 1.6rem;
+    }
+
+    .guide-content .num {
+        position: absolute;
+        top: 1.4rem;
+        right: 1.6rem;
+        font-family: 'Do Hyeon', sans-serif;
+        font-size: 2.2rem;
+    }
+
+    /* 기본 상태에서 설명 숨기기 */
+    .guide-content p {
+        display: none;
+    }
+
+    /* 선택된 카드 */
+    .guide-content li.on {
+        min-height: 22rem;
+    }
+
+    .guide-content li.on .num {
+        display: block;
+        color: #ffd45c;
+    }
+
+    .guide-content .thumb {
+        position: static;
+        display: none;
+    }
+
+    .guide-content li.on .thumb {
+        display: block;
+        font-size: 4.4rem;
+    }
+
+    .guide-content li.on p {
+        display: block;
+    }
+
+    .guide-content li.on h3 {
+        font-size: 2.4rem;
+    }
+
+
+    /* ===== 7. 사진첩 ===== */
+
+    .photos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(4, 12rem);
+
+        grid-template-areas:
+            "p1 p1"
+            "p2 p3"
+            "p4 p3"
+            "p5 p5";
+
+        gap: 1.2rem;
+    }
+
+    .photos li {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
+    .photos li p {
+        font-size: 1.6rem;
+    }
+
+
+    /* ===== 8. FOOTER ===== */
+
+    footer {
+        flex-direction: column;
+        gap: 0.4rem;
+        text-align: center;
+    }
+
+
+    /* ===== 9. TOP 버튼 ===== */
+
+    .top {
+        right: 1.6rem;
+        bottom: 1.6rem;
+        width: 4.8rem;
+        height: 4.8rem;
+    }
+
 }
